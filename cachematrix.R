@@ -1,6 +1,8 @@
 ## Put comments here that give an overall description of what your
 ## functions do
 
+## A special matrix, actually a function that creates a list of functions
+
 ## Write a short comment describing this function
 
 ## The list of functions are
