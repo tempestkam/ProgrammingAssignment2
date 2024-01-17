@@ -5,7 +5,7 @@
 
 ## Write a short comment describing this function
 
-## The list of functions are
+## The list of functions contains
 ## A function that sets data in the cache
 ## A function that returns data
 ## A function that sets the inverse matrix in cache
