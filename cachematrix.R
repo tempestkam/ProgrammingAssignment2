@@ -1,15 +1,18 @@
 ## Put comments here that give an overall description of what your
 ## functions do
 
-## A special matrix, actually a function that creates a list of functions
+## The matrix-to-inverse computation is made more efficient by using a cache.
+## Once the inverse matrix is computed, it is stored in the cache 
+## and the cache is returned when it is computed again.
 
 ## Write a short comment describing this function
 
-## The list of functions contains
-## A function that sets data in the cache
-## A function that returns data
-## A function that sets the inverse matrix in cache
-## A function that returns the inverse matrix
+## List of functions to place matrices and inverses in cache
+## It contains
+## a function that sets matrix in the cache
+## a function that returns matrix
+## a function that sets the inverse matrix in the cache
+## a function that returns the inverse matrix
 
 makeCacheMatrix <- function(x = matrix()) {
     inv <- NULL
@@ -20,7 +23,7 @@ makeCacheMatrix <- function(x = matrix()) {
     
     get <- function() x
     
-    setinv <- function(solve) inv <<- solve
+    setinv <- function(inverse) inv <<- inverse
     
     getinv <- function() inv
     
@@ -32,10 +35,10 @@ makeCacheMatrix <- function(x = matrix()) {
 
 ## Write a short comment describing this function
 
-## First checks if the inverse matrix has already been computed. 
-## If so, retrieve the inverse matrix from cache and skip the computation. 
-## If not, it calculates the inverse matrix of the data and sets the value 
-## of the inverse matrix in the cache with the setinv function.
+## First, check if the inverse matrix has already been computed.
+## If so, retrieve the inverse matrix from the cache and skip the computation. 
+## Otherwise, compute the inverse matrix and set its value. 
+## setinv function sets the inverse matrix to the cache.
 
 cacheSolve <- function(x, ...) {
     ## Return a matrix that is the inverse of 'x'
@@ -44,8 +47,8 @@ cacheSolve <- function(x, ...) {
         message("getting cached data")
         return(inv)
     }
-    data <- x$get()
-    inv <- solve(data, ...)
+    mat <- x$get()
+    inv <- solve(mat, ...)
     x$setinv(inv)
     inv
 }
